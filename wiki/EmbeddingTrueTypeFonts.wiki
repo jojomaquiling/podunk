@@ -8,12 +8,12 @@ The Font class is extremely simple -- having only four properties that correspon
 
 = Details =
 
-* Find your TrueType font.
-* Start up FontForge and open the TTF file.  Some detailed fonts can take several minutes to open, so have patience.  You should see a grib layout of the font's glyphs.
-* Select 'Generate Fonts' from the File menu.
-* Select 'PS Type 1 (Binary)'
-* Click the 'Options' button and insure that 'Output AFM' is checked.
-* Click 'Save' -- Do not try to rename the font, it should be using the exact font name that ReportLab will need during import.  If you get validation errors you may have to uncheck 'Validate before Saving' on the same dialog.
+ * Find your TrueType font.
+ * Start up FontForge and open the TTF file.  Some detailed fonts can take several minutes to open, so have patience.  You should see a grid layout of the font's glyphs.
+ * Select 'Generate Fonts' from the File menu.
+ * Select 'PS Type 1 (Binary)'
+ * Click the 'Options' button and insure that 'Output AFM' is checked.
+ * Click 'Save' -- Do not try to rename the font, it should be using the exact font name that ReportLab will need during import.  If you get validation errors you may have to un-check 'Validate before Saving' on the same dialog.
 
 You should now have two files with the name of the font that end with '.afm' and '.pfb'.  Now repeat the process with any bold, italic, and bold + italic versions you have for this typeface.
 
