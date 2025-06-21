@@ -19,8 +19,8 @@ class Report(object):
 
         self.pdf_file = pdf_file
         self.title = 'Untitled Report'
-        self.author = 'rdempc-accountingsystem'
-        self.subject = 'RDEMPC Generated Report'
+        self.author = 'joeymagsino'
+        self.subject = 'Untitled Report'
         self.page_width, self.page_height = paper.LETTER_PORTRAIT
 
         self.left_margin = 54
