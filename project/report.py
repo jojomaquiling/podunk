@@ -95,6 +95,7 @@ class Report(object):
         self.draw_list = []
 
         self._page_count = 1
+        self._total_page = 0
         self.with_footer = True
 
     # -----------------------------------------------------------------------Add
@@ -102,8 +103,17 @@ class Report(object):
     def setWithFooter(self, foot_setter):
         self.with_footer = foot_setter
 
+    def setTotalPage(self, total_page):
+        self._total_page = total_page
+        self.last_page.value = '%d' % self._total_page
+        self.last_page.draw(self.canvas, self._right_edge - (self.right_margin + 14),
+                            self.bottom_margin * .65)
+
     def add(self, item):
         # Add any object that, duck-typingly, has a 'draw_some' method
+        if hasattr(item, 'get_page_count') and callable(item.get_page_count):
+            print("There is total page in item", item.get_page_count())
+            self.setTotalPage(item.get_page_count())
         self.draw_list.append(item)
 
     # --------------------------------------------------------------------Create
@@ -117,7 +127,6 @@ class Report(object):
         vspace = self._working_height
         left = self.left_margin
         right = self.page_width - self.right_margin
-        page_count = 1
 
         for item in self.draw_list:
 
@@ -131,8 +140,8 @@ class Report(object):
                 used = item.draw_some(self.canvas, left, right, yoff, vspace)
 
                 if used == 0:
+                    self._page_count = self._page_count + 1
                     break
-                    page_count = page_count + 1
 
                 else:
                     vspace -= used
@@ -177,7 +186,7 @@ class Report(object):
                              self.bottom_margin * .65)
             self.date.draw(self.canvas, self.left_margin,
                            self.bottom_margin * .65)
-            self.page_num.value = f'Page {self._page_count} of '
+            self.page_num.value = f'Page {self._page_count} of {self._total_page}'
             self.page_num.draw(self.canvas, self.left_margin,
                                self.bottom_margin * .65)
             self.canvas.doForm('last_page')
