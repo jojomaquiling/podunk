@@ -106,13 +106,12 @@ class Report(object):
     def setTotalPage(self, total_page):
         self._total_page = total_page
         self.last_page.value = '%d' % self._total_page
-        self.last_page.draw(self.canvas, self._right_edge - (self.right_margin + 14),
-                            self.bottom_margin * .65)
+        # self.last_page.draw(self.canvas, self._right_edge - (self.right_margin + 14),
+        #                    self.bottom_margin * .65)
 
     def add(self, item):
         # Add any object that, duck-typingly, has a 'draw_some' method
         if hasattr(item, 'get_page_count') and callable(item.get_page_count):
-            print("There is total page in item", item.get_page_count())
             self.setTotalPage(item.get_page_count())
         self.draw_list.append(item)
 
@@ -152,10 +151,12 @@ class Report(object):
 
         self.canvas.beginForm('last_page')
         self.canvas.saveState()
+
         self.last_page.value = '%d' % self._page_count
-        self.last_page.draw(self.canvas,
-                            self._right_edge - (self.right_margin + 14),
-                            self.bottom_margin * .65)
+        # self.last_page.draw(self.canvas,
+        #                    self._right_edge - (self.right_margin + 14),
+        #                    self.bottom_margin * .65)
+
         self.canvas.restoreState()
         self.canvas.endForm()
 
