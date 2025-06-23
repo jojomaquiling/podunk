@@ -19,7 +19,7 @@ class Report(object):
 
         self.pdf_file = pdf_file
         self.title = 'Untitled Report'
-        self.author = 'joeymagsino'
+        self.author = 'author'
         self.subject = 'Untitled Report'
         self.page_width, self.page_height = paper.LETTER_PORTRAIT
 
