@@ -135,3 +135,24 @@ def format_report_date(value):
     else:
         retval = value.strftime('%b %d, %Y - %I:%M %p')
     return retval
+
+
+def format_report_date_isoformat(value):
+    """
+    Returns the date and time in the ISO format.
+    """
+    if value == None:
+        retval = ''
+    else:
+        retval = value.isoformat()
+    return retval
+
+
+def format_hex(value):
+    """
+    Returns value as hexadecimal string. 
+    """
+    if value == None:
+        retval = ''
+    else:
+        retval = "%X" % value
